@@ -1,0 +1,33 @@
+{
+  "name": "week3-sonia-joe-george-minju",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open",
+    "dev": "nodemon -r dotenv/config server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac24/week3-Sonia-Joe-George-Minju.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac24/week3-Sonia-Joe-George-Minju/issues"
+  },
+  "homepage": "https://github.com/fac24/week3-Sonia-Joe-George-Minju#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "cypress": "^9.7.0",
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.16"
+  }
+}
