@@ -3,7 +3,7 @@ BEGIN;
 DROP TABLE IF EXISTS users, sessions, posts CASCADE;
 
 CREATE TABLE sessions (
-    sid CHAR(18) UNIQUE NOT NULL PRIMARY KEY,
+    sid CHAR(24) UNIQUE NOT NULL PRIMARY KEY,
     data JSON NOT NULL
 );
 

@@ -18,7 +18,11 @@ function get(request, response) {
 
 function post(request, response) {
   const { username, password } = request.body;
-  auth.createUser(username, password).then(() => response.redirect("/"));
+  const isUnique = model
+    .getUser(username)
+    .then((result) => console.log(result));
+
+  auth.createUser(username, password).then(() => response.redirect("/")); //Need to create session Id for it before redirecting to next page
 }
 
 module.exports = { get, post };
