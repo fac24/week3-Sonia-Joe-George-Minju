@@ -37,11 +37,11 @@ function getSession(sid) {
 
 function getPosts() {
   const SELECT_POSTS = `
-    SELECT users.username, posts.post, posts.id
+    SELECT users.username, posts.post, posts.id, posts.user_id
     FROM users
     INNER JOIN posts
-    ON users.id = posts.user_id AND posts.id = $1`;
-  return db.query(SELECT_POSTS, [id]).then((results) => results);
+    ON users.id = posts.user_id`;
+  return db.query(SELECT_POSTS).then((results) => results);
 }
 
 function createPost(user_id, post) {
@@ -54,12 +54,15 @@ function createPost(user_id, post) {
     .then((result) => result.rows[0]);
 }
 
-function deletePost(post) {
+function deletePost(post_id, user_id) {
   const DELETE_POST = `
-    DELETE FROM posts WHERE id = $1 AND post = $2 AND user_id = 
-      (SELECT id FROM users WHERE username = $3) ;
+    DELETE FROM posts WHERE id = $1 AND user_id = $2
+    RETURNING id, user_id, post
   `;
-  return db.query(DELETE_POST, [post.id, post.post, post.username]);
+  return db.query(DELETE_POST, [post_id, user_id]).then((result) => {
+    console.log(`result.rows: ${result.rows}`);
+    return result.rows[0];
+  });
 }
 
 module.exports = {
