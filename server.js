@@ -5,6 +5,8 @@ const home = require("./routes/home.js");
 const login = require("./routes/login.js");
 const signUp = require("./routes/signUp.js");
 const posts = require("./routes/posts.js");
+const addpost = require("./routes/addPost.js");
+const { response } = require("express");
 
 const server = express();
 
@@ -18,6 +20,17 @@ server.use(bodyHandler);
 // :((((
 server.use(cookieParser("letsuseastringinherefornow")); //COOKIE_SECRET))//ok
 
+function checkAuth(req, res, next) {
+  const sid = req.signedCookies.sid;
+  if (!sid) {
+    res.status(401).send(`<h1>Please Log In or Sign Up to view this page</h1>
+        <a href="/login">Log in</a>
+        <a href="/sign-up">Sign up</a>`);
+  } else {
+    next();
+  }
+}
+
 server.get("/", home.get);
 
 server.get("/login", login.get);
@@ -26,7 +39,9 @@ server.post("/login", login.post);
 server.get("/sign-up", signUp.get);
 server.post("/sign-up", signUp.post);
 
-server.get("/posts", posts.get);
+server.get("/posts", checkAuth, posts.get);
+
+server.post("/addpost", checkAuth, addpost.post);
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
