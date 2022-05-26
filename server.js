@@ -1,7 +1,7 @@
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const dotenv = require("dotenv");
-const home = require("./routes/home.js");
+// const home = require("./routes/home.js");
 const login = require("./routes/login.js");
 const signUp = require("./routes/signUp.js");
 const posts = require("./routes/posts.js");
@@ -34,7 +34,7 @@ function checkAuth(req, res, next) {
   }
 }
 
-server.get("/", home.get);
+//server.get("/", checkAuth, home.get);
 
 server.get("/login", login.get);
 server.post("/login", login.post);
@@ -42,7 +42,7 @@ server.post("/login", login.post);
 server.get("/sign-up", signUp.get);
 server.post("/sign-up", signUp.post);
 
-server.get("/posts", checkAuth, posts.get);
+server.get("/", checkAuth, posts.get);
 
 // Joe says: did checkAuth break this route at some point? It seems to work now, fingers crossed!
 // Hmm not really sure it did at one point but think it works:.,
