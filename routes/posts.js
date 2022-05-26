@@ -13,7 +13,6 @@ function get(request, response) {
       <span aria-hidden="true">*</span>
     </label>
     <input id="post" type="text" name="post" required />
-
     <button>Submit</button>
   </form>
 `;
@@ -28,19 +27,34 @@ function get(request, response) {
         let postsHTML = "";
         const posts = results.rows;
         // console.log(posts);
-        posts.map((post) => {
-          postsHTML = `
-              <div class="post-container">
+
+        const sid = request.signedCookies.sid;
+        model.getSession(sid).then((result) => {
+          //console.log(`result.data.user.id: ${result.data.user.id}`);
+
+          posts.map((post) => {
+            console.log(`post.user_id: ${post.user_id}`);
+            let deleteButton = "";
+            if (post.user_id === result.data.user.id) {
+              deleteButton = `
+              <form action="/delete-post" method="POST">
+                <button class="delete-button" name="post_id" value="${post.id}" aria-label="Delete ${post.post}">
+                  &times;
+                </button>
+              </form>`;
+            }
+
+            postsHTML = `
+            <div class="post-container">
               <p>Username: ${post.username} </p>
               <p>Suggests: ${post.post} </p>
-              <form action="/delete-post" method="POST">
-                <button class="delete-button" name="id" value="${post.id}" aria-label="Delete ${post.post}">
-                    &times;
-                </button>
-              </div>
-              `.concat(postsHTML);
+              ${deleteButton}
+            </div>
+            `.concat(postsHTML);
+          });
+
+          return postsHTML;
         });
-        return postsHTML;
       }
     })
     .then((postsHTML) => response.send(layout("Posts", html.concat(postsHTML))))
