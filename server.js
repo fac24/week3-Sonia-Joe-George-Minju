@@ -6,6 +6,7 @@ const login = require("./routes/login.js");
 const signUp = require("./routes/signUp.js");
 const posts = require("./routes/posts.js");
 const addpost = require("./routes/addPost.js");
+const deletePost = require("./routes/deletePost.js");
 const { response } = require("express");
 
 const server = express();
@@ -27,6 +28,8 @@ function checkAuth(req, res, next) {
         <a href="/login">Log in</a>
         <a href="/sign-up">Sign up</a>`);
   } else {
+    // Joe says: arguably we should check here that the current session ID is valid
+    // (which needs to happen from multiple places, so is being handled by auth.js)
     next();
   }
 }
@@ -41,7 +44,11 @@ server.post("/sign-up", signUp.post);
 
 server.get("/posts", checkAuth, posts.get);
 
-server.post("/addpost", checkAuth, addpost.post);
+// Joe says: did checkAuth break this route at some point? It seems to work now, fingers crossed!
+// Hmm not really sure it did at one point but think it works:.,
+server.post("/add-post", checkAuth, addpost.post);
+
+server.post("/delete-post", checkAuth, deletePost.post);
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
