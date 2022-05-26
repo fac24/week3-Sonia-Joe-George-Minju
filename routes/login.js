@@ -22,20 +22,19 @@ function post(request, response) {
   // Get the username and password that the user entered in the login form:
   const { username, password } = request.body;
   console.log("Logging in...");
-  auth.verifyUser(username, password);
-  // console.log("///", auth.verifyUser(username, password));
-
-  // (We will have to hash the submitted password, because the password stored in the database is hashed!)
-  // If the password matches, then:
-  // -  Create a new, unique session ID for the authenticated user (auth.js)
-
-  //    and store it in the database (in the sessions table). (model.js)
-
-  // - Send the user a signed cookie with this session ID. (here!)
-
-  // The user is now logged-in! So redirect them to .. somewhere (probably the home page).
-
-  response.redirect("/");
+  auth
+    // Check if the password matches (done in auth.js):
+    .verifyUser(username, password)
+    // If the password matches, then create a new, unique session ID for
+    // the authenticated user and store it in the database (both done in auth.js)
+    .then((user) => auth.createSession(user.username))
+    .then((sid) => {
+      // And finally, send the user a signed cookie with this session ID:
+      //console.log(sid);
+      response.cookie("sid", sid, auth.COOKIE_OPTIONS);
+      // The user is now logged-in! So redirect them to .. somewhere (probably the home page).
+      response.redirect("/");
+    });
 }
 
 module.exports = { get, post };

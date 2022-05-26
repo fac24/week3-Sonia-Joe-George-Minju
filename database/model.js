@@ -28,8 +28,26 @@ function createSession(sessionId, dataObj) {
     .then((result) => result.rows[0]["sid"]);
 }
 
+function getSession(sid) {
+  const SELECT_SESSION = `
+    SELECT sid, data FROM sessions WHERE sid=$1
+  `;
+  return db.query(SELECT_SESSION, [sid]).then((result) => result.rows[0]);
+}
+
+function getPosts() {
+  const SELECT_POSTS = `
+    SELECT users.username, posts.post
+    FROM users
+    INNER JOIN posts
+    ON users.id = posts.user_id`;
+  return db.query(SELECT_POSTS).then((results) => results);
+}
+
 module.exports = {
   getUser,
   createSession,
   createUser,
+  getSession,
+  getPosts,
 };

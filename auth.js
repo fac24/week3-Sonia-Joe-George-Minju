@@ -18,10 +18,9 @@ function verifyUser(username, password) {
       console.error("User cannot be verified (no such user)");
     } else {
       // If there is one result, then compare the password with the stored (hashed) password:
-      bcrypt.compare(password, user.password).then((match) => {
+      return bcrypt.compare(password, user.password).then((match) => {
         if (match === true) {
           // If the hashed passwords match, then return the user:
-          //   console.log(user);
           return user;
         } else {
           // If they don't, then show an error:
@@ -32,6 +31,15 @@ function verifyUser(username, password) {
   });
 }
 
+// Joe says: this createUser function creates a user *and* logs them in
+// (makes a new session for them).
+// That's OK if that's how we want our app to work, but arguably we should
+// just have the create session code in the createSession function
+// (to avoid duplication :).
+// We'll leave it like this for now and just duplicate the code, and we can decide
+// if we want to remove the duplication later.
+// (The other option is that the createUser function ONLY creates a user, and doesn't
+// also log them in. This is how the workshops that we've seen work.)
 function createUser(username, password) {
   const sid = crypto.randomBytes(18).toString("base64");
   //  console.log(sid.length);
@@ -42,7 +50,8 @@ function createUser(username, password) {
 }
 
 function createSession(username) {
-  model.createSession(sid, { username });
+  const sid = crypto.randomBytes(18).toString("base64");
+  return model.createSession(sid, { username }).then((sid) => sid);
 }
 
 module.exports = {
