@@ -6,8 +6,7 @@ if (!process.env.DATABASE_URL) {
 
 const options = {
   connectionString: process.env.DATABASE_URL,
-  // We shouldn't need this if we're using a local pg db for dev and testing.
-  // (When the app is deployed, this setting shouldn't be required for Heroku to connect to its own Postgres db.)
+  // Apparently we need this to stil deploy on heroku
   ssl: {
     rejectUnauthorized: false,
   },
