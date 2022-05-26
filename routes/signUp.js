@@ -5,7 +5,7 @@ const layout = require("../layout.js");
 function get(request, response) {
   const body = `
     <h1>Create an account</h1>
-    <form id="sign" action="sign-up" method="POST">
+    <form id="sign-up-form" action="sign-up" method="POST">
         <label for="name">Username</label>
         <input type="text" id="username" name="username" require>
         <label for="password">Password</label>
