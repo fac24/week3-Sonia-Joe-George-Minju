@@ -9,7 +9,7 @@ function get(request, response) {
     </label>
 
     <label for="post">
-      What's your go-to plant-based milk? ;)
+      What's your go-to plant-based milk?
       <span aria-hidden="true">*</span>
     </label>
     <input id="post" type="text" name="post" required />
@@ -29,11 +29,11 @@ function get(request, response) {
         // console.log(posts);
 
         const sid = request.signedCookies.sid;
-        model.getSession(sid).then((result) => {
+        return model.getSession(sid).then((result) => {
           //console.log(`result.data.user.id: ${result.data.user.id}`);
 
           posts.map((post) => {
-            console.log(`post.user_id: ${post.user_id}`);
+            //console.log(`post.user_id: ${post.user_id}`);
             let deleteButton = "";
             if (post.user_id === result.data.user.id) {
               deleteButton = `
