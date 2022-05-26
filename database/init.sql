@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS users, sessions, posts CASCADE;
 
 CREATE TABLE sessions (
     sid CHAR(24) UNIQUE NOT NULL PRIMARY KEY,
-    data JSON NOT NULL
+    data JSON NOT NULL -- user : { username: blah }
 );
 
 CREATE TABLE users (
@@ -15,7 +15,7 @@ CREATE TABLE users (
 
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE, 
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE NOT NULL, 
   post TEXT NOT NULL
 );
 
