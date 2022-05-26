@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS users, sessions, posts CASCADE;
 CREATE TABLE sessions (
     sid CHAR(24) UNIQUE NOT NULL PRIMARY KEY,
     data JSON NOT NULL -- user : { username: blah }
+    -- user_id INTEGER REFERENCES users(id) NOT NULL,
 );
 
 CREATE TABLE users (
@@ -18,6 +19,5 @@ CREATE TABLE posts (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE NOT NULL, 
   post TEXT NOT NULL
 );
-
 
 COMMIT;
