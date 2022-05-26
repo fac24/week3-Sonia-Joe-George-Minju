@@ -33,7 +33,7 @@ function post(request, response) {
       //console.log(sid);
       response.cookie("sid", sid, auth.COOKIE_OPTIONS);
       // The user is now logged-in! So redirect them to .. somewhere (probably the home page).
-      response.redirect("/");
+      response.redirect("/posts");
     });
 }
 
