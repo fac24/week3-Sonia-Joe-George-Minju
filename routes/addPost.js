@@ -9,7 +9,7 @@ function post(request, response) {
   // 2. Query the database sid table to see if the sid exists
   // 3. If the sid exists, return the sid and the data column (which contains the user object)
   model.getSession(sid).then((result) => {
-    console.log(result);
+    //console.log(result);
     model
       .createPost(result.data.user.id, post)
       .then(() => response.redirect("/"));
