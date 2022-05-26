@@ -11,6 +11,7 @@ function get(request, response) {
         <label for="password">Password</label>
         <input type="password" id="password" name="password" require>
     <button>Sign up</button>
+    <a href="/">Back to Home</a>
   </form>
     `;
   response.send(layout("Sign-up", body));
