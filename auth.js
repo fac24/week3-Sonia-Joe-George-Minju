@@ -51,8 +51,10 @@ function createUser(username, password) {
 
 function createSession(username) {
   const sid = crypto.randomBytes(18).toString("base64");
-  return model.createSession(sid, { username }).then((sid) => sid);
+  return model.createSession(sid, { user: userObj }).then((sid) => sid);
 }
+
+function verifySession(sid) {}
 
 module.exports = {
   COOKIE_OPTIONS,
