@@ -1,0 +1,27 @@
+/* :root {
+    font-family: 'Hind', sans-serif;
+} */
+
+/* body {
+    background-color: red;
+} */
+
+h1 {
+    font-family: 'Hind', sans-serif;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    border: black 2px solid;
+    padding-bottom: 1.5rem;
+}
+
+.btn {
+    background-color: pink;
+    text-decoration: none;
+    color: inherit;
+    padding: 1rem 6rem;
+}

@@ -24,9 +24,14 @@ server.use(cookieParser("letsuseastringinherefornow")); //COOKIE_SECRET))//ok
 function checkAuth(req, res, next) {
   const sid = req.signedCookies.sid;
   if (!sid) {
-    res.status(401).send(`<h1>Please Log In or Sign Up to view this page</h1>
-        <a href="/login">Log in</a>
-        <a href="/sign-up">Sign up</a>`);
+    res.status(401).send(`
+    <div class="flex-container">
+    <h1>Moo Lah Lah</h1>
+    <p>Making Cows Happy since 25/06, 12.25 p.m. </p>
+      <h2>Ready to share your fav plant-based milk? Log in! (or sign up)</h1>
+        <a class="btn" href="/login">Log in</a>
+        <a class="btn" href="/sign-up">Sign up</a>
+    </div>`);
   } else {
     // Joe says: arguably we should check here that the current session ID is valid
     // (which needs to happen from multiple places, so is being handled by auth.js)
