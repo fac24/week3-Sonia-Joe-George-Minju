@@ -5,7 +5,8 @@ function get(request, response) {
   const html = layout(
     "Login",
     /*html*/ `
-    <h1>Log in</h1>
+    <div class="flex-container">
+    <h2>Log in</h2>
     <form action="login" method="POST">
       <label for="username">Username</label>
       <input type="text" id="username" name="username">
@@ -13,6 +14,7 @@ function get(request, response) {
       <input type="password" id="password" name="password">
       <button>Log in</button>
       <a href="/">Back to Home</a>
+    </div>
     </form>
   `
   );

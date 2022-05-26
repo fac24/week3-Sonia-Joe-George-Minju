@@ -3,13 +3,14 @@ const model = require("../database/model.js");
 
 function get(request, response) {
   let html = `
+  <h2>Share your go-to plant-based milk</h2>
   <form action="/add-post" method="POST">
     <label for="username">
       Username
     </label>
 
     <label for="post">
-      What's your go-to plant-based milk?
+      What's so yummy about it? Tell us more...
       <span aria-hidden="true">*</span>
     </label>
     <input id="post" type="text" name="post" required />
