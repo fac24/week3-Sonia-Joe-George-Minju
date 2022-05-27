@@ -46,6 +46,7 @@ jobs:
         uses: cypress-io/github-action@v2
         env:
           DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+          DATABASE_NAME: "postgres"
         with: 
           start: npm start
                       
