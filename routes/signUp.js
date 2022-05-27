@@ -3,9 +3,10 @@ const auth = require("../auth.js");
 const layout = require("../layout.js");
 
 function get(request, response) {
-  const body = /*html*/ `
-    <h1>Create an account</h1>
-    <form id="sign-up-form" action="sign-up" method="POST">
+  const body = `
+  <div class="flex-container">
+  <h2 class="h2-headings">Create an account</h2>
+    <form class="style-form" id="sign-up-form" action="sign-up" method="POST">
         <label for="username">
           Username
           <span aria-hidden="true">*</span>
@@ -19,16 +20,17 @@ function get(request, response) {
           type="password" 
           id="password" 
           name="password" 
-          aria-describedby="passwordRequirements" 
+          aria-describedby="instruction" 
           required
           pattern=".*\d.*"
           minlength="8"
         >
         <div id="passwordError"></div>
         <div id="instruction">Passwords must contain at least one letter and one number, and contain at least 8 characters.</div>
-    <button>Sign up</button>
-    <a href="/">Back to Home</a>
+    <button class="btn" >Sign up</button>
+    <a href="/" class="btn">Home</a>
   </form>
+  </div>
     `;
   response.send(layout("Sign-up", body));
 }

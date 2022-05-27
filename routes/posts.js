@@ -2,27 +2,30 @@ const layout = require("../layout.js");
 const model = require("../database/model.js");
 
 function get(request, response) {
-  let html = /*html*/ `
-  <form action="/add-post" method="POST">
+  let html = layout(`Posts`, `
+  <div class="flex-container">
+  <h2 class="h2-headings">Share your go-to plant-based milk </h2>
+  <form class="style-form" action="/add-post" method="POST">
     <label for="username">
       Username
     </label>
 
     <label for="post">
-      What's your go-to plant-based milk?
+      What's so yummy about it? Tell us more 🐮
       <span aria-hidden="true">*</span>
     </label>
     <input id="post" type="text" name="post" required />
-    <button>Submit</button>
+    <button class="btn">Submit</button>
+    </div>
   </form>
-`;
+ `) ;
 
   model
     .getPosts()
     .then((results) => {
       // console.log(results);
       if (results.rows.length === 0) {
-        return "<p>Sorry, no posts yet</p>";
+        return `<p class="post-container">What an honour! You're the first one to post something 😊</p>`;
       } else {
         let postsHTML = "";
         const posts = results.rows;
@@ -41,15 +44,15 @@ function get(request, response) {
                 <button class="delete-button" name="post_id" value="${post.id}" aria-label="Delete ${post.post}">
                   &times;
                 </button>
+                </div>
               </form>`;
             }
 
-            postsHTML = /*html*/ `
-            <div class="post-container">
+            postsHTML = `
+            <div class="flex-container post-container">
               <p>Username: ${post.username} </p>
               <p>Suggests: ${post.post} </p>
-              ${deleteButton}
-            </div>
+              ${deleteButton}  
             `.concat(postsHTML);
           });
 

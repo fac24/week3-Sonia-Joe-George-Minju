@@ -6,6 +6,8 @@ const signUp = require("./routes/signUp.js");
 const posts = require("./routes/posts.js");
 const addpost = require("./routes/addPost.js");
 const deletePost = require("./routes/deletePost.js");
+const { response } = require("express");
+const layout = require("./layout.js")
 
 const server = express();
 
@@ -20,9 +22,14 @@ server.use(cookieParser(process.env.COOKIE_SECRET));
 function checkAuth(req, res, next) {
   const sid = req.signedCookies.sid;
   if (!sid) {
-    res.status(401).send(`<h1>Please Log In or Sign Up to view this page</h1>
-        <a href="/login">Log in</a>
-        <a href="/sign-up">Sign up</a>`);
+    res.status(401).send(layout(`Moo Lah Lah`,`
+    <div class="flex-container">
+    <h1>Moo Lah Lah</h1>
+    <p class="tagline">Making Cows Happy since 25/06, 12.25 p.m. </p>
+      <h2>Ready to share your fav plant-based milk?</h1>
+        <a class="btn" href="/login">Log in</a>
+        <a class="btn" href="/sign-up">Sign up</a>
+    </div>`));
   } else {
     // Joe says: arguably we should check here that the current session ID is valid
     // (which needs to happen from multiple places, so is being handled by auth.js)
