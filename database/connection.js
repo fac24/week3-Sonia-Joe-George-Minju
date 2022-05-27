@@ -7,9 +7,9 @@ if (!process.env.DATABASE_URL) {
 const options = {
   connectionString: process.env.DATABASE_URL,
   // Apparently we need this to stil deploy on heroku
-  ssl: {
+  /* ssl: {
     rejectUnauthorized: false,
-  },
+  }, */
 };
 
 const db = new pg.Pool(options);
