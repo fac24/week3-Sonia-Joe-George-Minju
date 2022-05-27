@@ -52,7 +52,8 @@ h1 {
 }
 
 .btn:hover {
-    font-family: 'Moo Lah Lah';
+    cursor: pointer;
+    background-color: #fcd2d6;
 }
 
 .tagline {
