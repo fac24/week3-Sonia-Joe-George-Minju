@@ -1,8 +1,6 @@
 const signUpForm = document.querySelector("#sign-up-form");
 const inputElems = signUpForm.querySelectorAll("input");
 
-console.log("hi");
-
 signUpForm.setAttribute("novalidate", "");
 
 signUpForm.addEventListener("submit", (event) => {
