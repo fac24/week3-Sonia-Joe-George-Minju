@@ -2,7 +2,7 @@ const layout = require("../layout.js");
 const model = require("../database/model.js");
 
 function get(request, response) {
-  let html = `
+  let html = /*html*/ `
   <form action="/add-post" method="POST">
     <label for="username">
       Username
@@ -36,7 +36,7 @@ function get(request, response) {
             //console.log(`post.user_id: ${post.user_id}`);
             let deleteButton = "";
             if (post.user_id === result.data.user.id) {
-              deleteButton = `
+              deleteButton = /*html*/ `
               <form action="/delete-post" method="POST">
                 <button class="delete-button" name="post_id" value="${post.id}" aria-label="Delete ${post.post}">
                   &times;
@@ -44,7 +44,7 @@ function get(request, response) {
               </form>`;
             }
 
-            postsHTML = `
+            postsHTML = /*html*/ `
             <div class="post-container">
               <p>Username: ${post.username} </p>
               <p>Suggests: ${post.post} </p>
