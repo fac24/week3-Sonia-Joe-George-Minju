@@ -20,4 +20,15 @@ CREATE TABLE posts (
   post TEXT NOT NULL
 );
 
+
+INSERT INTO users (username, password) VALUES
+  ('moolahrouge', Aaaaaa1),
+  ('apatheticAlan', Bbbbbbb2)
+;
+
+INSERT INTO posts (user_id, post) VALUES
+  (1, 'Broccoli milk ftw. It changed my life!'),
+  (2, `Oat milk. Because it's cheap. Lols`)
+;
+
 COMMIT;
