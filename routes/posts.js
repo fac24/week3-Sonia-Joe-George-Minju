@@ -39,7 +39,7 @@ function get(request, response) {
             //console.log(`post.user_id: ${post.user_id}`);
             let deleteButton = "";
             if (post.user_id === result.data.user.id) {
-              deleteButton = `
+              deleteButton = /*html*/ `
               <form action="/delete-post" method="POST">
                 <button class="delete-button" name="post_id" value="${post.id}" aria-label="Delete ${post.post}">
                   &times;

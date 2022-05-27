@@ -6,11 +6,13 @@ if (!process.env.DATABASE_URL) {
 
 const options = {
   connectionString: process.env.DATABASE_URL,
-  // We shouldn't need this if we're using a local pg db for dev and testing.
-  // (When the app is deployed, this setting shouldn't be required for Heroku to connect to its own Postgres db.)
-  // ssl: {
-  //   rejectUnauthorized: false,
-  // },
+  // We don't need this to deploy on Heroku:
+  /* ssl: {
+    rejectUnauthorized: false,
+  }, */
+  // But we do need to set a Config Var on Heroku:
+  // PGSSLMODE=no-verify
+  // (This is a PostgreSQL env var: https://www.postgresql.org/docs/current/libpq-envars.html)
 };
 
 const db = new pg.Pool(options);

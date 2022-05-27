@@ -5,16 +5,32 @@ const layout = require("../layout.js");
 function get(request, response) {
   const body = `
   <div class="flex-container">
-    <h2 class="h2-login">Create an account</h2>
+  <h2 class="h2-login">Create an account</h2>
     <form class="style-form" id="sign-up-form" action="sign-up" method="POST">
-        <label for="name">Username</label>
-        <input type="text" id="username" name="username" require>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" require>
-    <button class="btn">Sign up</button>
+        <label for="username">
+          Username
+          <span aria-hidden="true">*</span>
+        </label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">
+          Password
+          <span aria-hidden="true">*</span>
+        </label>
+        <input    
+          type="password" 
+          id="password" 
+          name="password" 
+          aria-describedby="passwordRequirements" 
+          required
+          pattern=".*\d.*"
+          minlength="8"
+        >
+        <div id="passwordError"></div>
+        <div id="instruction">Passwords must contain at least one letter and one number, and contain at least 8 characters.</div>
+    <button class="btn" >Sign up</button>
     <a href="/" class="btn">Home</a>
-    </div>
   </form>
+  </div>
     `;
   response.send(layout("Sign-up", body));
 }

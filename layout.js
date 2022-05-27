@@ -9,8 +9,9 @@ function layout(title, content) {
   <link href="https://fonts.googleapis.com/css2?family=Moo+Lah+Lah&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
   <title>${title}</title>
-  <link rel="stylesheet" href="/styles.css" type="text/css">
-</head>
+  <link rel="stylesheet" href="styles.css" type="text/css">
+  <script defer src='script.js'></script>
+  </head>
 <body>
   ${content}
 </body>
