@@ -6,7 +6,6 @@ const signUp = require("./routes/signUp.js");
 const posts = require("./routes/posts.js");
 const addpost = require("./routes/addPost.js");
 const deletePost = require("./routes/deletePost.js");
-const { response } = require("express");
 
 const server = express();
 
