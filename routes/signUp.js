@@ -22,7 +22,7 @@ function get(request, response) {
           name="password" 
           aria-describedby="instruction" 
           required
-          pattern=".*\d.*"
+          pattern=".*\\d.*"
           minlength="8"
         >
         <div id="passwordError"></div>
