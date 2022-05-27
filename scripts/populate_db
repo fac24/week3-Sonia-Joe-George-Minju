@@ -3,5 +3,15 @@
 # stop script when an error occurs
 set -e
 
-psql moolah -q -f "./database/init.sql"
-echo "Populated database tables"
+# import .env file so we have the DATABASE_NAME variable
+. "./.env"
+
+if [ -z "$DATABASE_NAME" ]
+then
+  echo "\$DATABASE_NAME is empty!"
+else
+  echo "Found \$DATABASE_NAME in .env"
+  echo "Now executing database init file in psql..."
+  psql $DATABASE_NAME -q -f "./database/init.sql"
+  echo "Populated database tables"
+fi
