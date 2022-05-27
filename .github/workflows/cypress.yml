@@ -18,7 +18,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v3
-
+      
+      #- name: DB Setup
+      - run: ./scripts/create_db
       # Runs a single command using the runners shell
       - name: Cypress Run
         uses: cypress-io/github-action@v2
