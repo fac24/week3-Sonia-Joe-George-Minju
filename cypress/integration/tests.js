@@ -22,7 +22,8 @@ describe("When not logged in, any route should show a prompt with a 401 response
 
   it("Login and signup link", () => {
     cy.visit("/", { failOnStatusCode: false });
-    cy.get("a");
+    cy.get("a").eq(0).click();
+    cy.url().should("eq", Cypress.config().baseUrl + "login");
   });
 });
 
