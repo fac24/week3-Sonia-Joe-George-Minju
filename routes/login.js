@@ -6,14 +6,14 @@ function get(request, response) {
     "Login",
     /*html*/ `
     <div class="flex-container">
-    <h2>Log in</h2>
-    <form action="login" method="POST">
+    <h2 class="h2-headings">Log in</h2>
+    <form class="style-form" action="login" method="POST">
       <label for="username">Username</label>
       <input type="text" id="username" name="username">
       <label for="password">Password</label>
       <input type="password" id="password" name="password">
-      <button>Log in</button>
-      <a href="/">Back to Home</a>
+      <button class="btn">Log in</button>
+      <a href="/" class="btn">Home</a>
     </div>
     </form>
   `
@@ -50,7 +50,8 @@ function post(request, response) {
     })
     .catch(() => {
       //console.log(error);
-      response.status(401).send(`<h1>Oops, something went wrong!</h1>`);
+      response.status(401).send(layout(`Error`,
+      `<h1 class="error-message">Oops, something went wrong!</h1>`));
     });
 }
 
