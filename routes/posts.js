@@ -2,7 +2,9 @@ const layout = require("../layout.js");
 const model = require("../database/model.js");
 
 function get(request, response) {
-  let html = layout(`Posts`, `
+  let html = layout(
+    `Posts`,
+    `
   <div class="flex-container">
   <h2 class="h2-headings">Share your go-to plant-based milk </h2>
   <form class="style-form" action="/add-post" method="POST">
@@ -11,14 +13,15 @@ function get(request, response) {
     </label>
 
     <label for="post">
-      What's so yummy about it? Tell us more 🐮
+      Tell us more about your favourite plant-based milk 🐮
       <span aria-hidden="true">*</span>
     </label>
     <input id="post" type="text" name="post" required />
     <button class="btn">Submit</button>
     </div>
   </form>
- `) ;
+ `
+  );
 
   model
     .getPosts()
