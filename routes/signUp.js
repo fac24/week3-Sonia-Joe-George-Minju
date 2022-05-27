@@ -5,7 +5,7 @@ const layout = require("../layout.js");
 function get(request, response) {
   const body = `
   <div class="flex-container">
-  <h2 class="h2-login">Create an account</h2>
+  <h2 class="h2-headings">Create an account</h2>
     <form class="style-form" id="sign-up-form" action="sign-up" method="POST">
         <label for="username">
           Username
