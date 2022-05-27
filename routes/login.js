@@ -6,7 +6,7 @@ function get(request, response) {
     "Login",
     /*html*/ `
     <h1>Log in</h1>
-    <form action="login" method="POST">
+    <form id="sign-up-form" action="login" method="POST">
       <label for="username">Username</label>
       <input type="text" id="username" name="username">
       <label for="password">Password</label>
