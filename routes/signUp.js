@@ -20,7 +20,7 @@ function get(request, response) {
           type="password" 
           id="password" 
           name="password" 
-          aria-describedby="passwordRequirements" 
+          aria-describedby="instruction" 
           required
           pattern=".*\d.*"
           minlength="8"

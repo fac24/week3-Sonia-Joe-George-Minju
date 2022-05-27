@@ -10,7 +10,7 @@ function layout(title, content) {
   <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
   <title>${title}</title>
   <link rel="stylesheet" href="styles.css" type="text/css">
-  <script defer src='script.js'></script>
+  <!-- <script defer src='script.js'></script>-->
   </head>
 <body>
   ${content}
