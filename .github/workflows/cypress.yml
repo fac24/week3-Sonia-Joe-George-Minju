@@ -40,10 +40,13 @@ jobs:
       #- name: DB Setup
       - run: psql -f database/init.sql postgresql://postgres:postgres@localhost:5432/postgres
         
-        env:
-          DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+
       # Runs a single command using the runners shell
       - name: Cypress Run
         uses: cypress-io/github-action@v2
+        env:
+          DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
         with: 
           start: npm start
+                      
+          
