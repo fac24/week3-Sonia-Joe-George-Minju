@@ -1,13 +1,11 @@
 const cookieParser = require("cookie-parser");
 const express = require("express");
-const dotenv = require("dotenv");
 // const home = require("./routes/home.js");
 const login = require("./routes/login.js");
 const signUp = require("./routes/signUp.js");
 const posts = require("./routes/posts.js");
 const addpost = require("./routes/addPost.js");
 const deletePost = require("./routes/deletePost.js");
-const { response } = require("express");
 
 const server = express();
 
@@ -16,10 +14,8 @@ const staticHandler = express.static("public");
 server.use(staticHandler);
 const bodyHandler = express.urlencoded({ extended: false });
 server.use(bodyHandler);
-// joe says: we can probably use .env as we've required dotenv above now :¬)
-// OK COOKIE_SECRET is still not working let's fix that later :(
-// :((((
-server.use(cookieParser("letsuseastringinherefornow")); //COOKIE_SECRET))//ok
+
+server.use(cookieParser(process.env.COOKIE_SECRET));
 
 function checkAuth(req, res, next) {
   const sid = req.signedCookies.sid;
