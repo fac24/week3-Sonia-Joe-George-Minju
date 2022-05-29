@@ -4,6 +4,7 @@ const model = require("../database/model.js");
 function get(request, response) {
   let html = layout(
     `Posts`,
+        /*html*/
     `
   <div class="flex-container">
   <h2 class="h2-headings">Share your go-to plant-based milk </h2>
@@ -18,8 +19,8 @@ function get(request, response) {
     </label>
     <input id="post" type="text" name="post" required />
     <button class="btn">Submit</button>
-    </div>
   </form>
+  </div>
  `
   );
 
@@ -47,7 +48,6 @@ function get(request, response) {
                 <button class="delete-button" name="post_id" value="${post.id}" aria-label="Delete ${post.post}">
                   &times;
                 </button>
-                </div>
               </form>`;
             }
 
@@ -56,6 +56,7 @@ function get(request, response) {
               <p>Username: ${post.username} </p>
               <p>Suggests: ${post.post} </p>
               ${deleteButton}  
+              </div>
             `.concat(postsHTML);
           });
 
