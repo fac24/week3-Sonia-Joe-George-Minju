@@ -9,12 +9,8 @@ function get(request, response) {
   <div class="flex-container">
   <h2 class="h2-headings">Share your go-to plant-based milk </h2>
   <form class="style-form" action="/add-post" method="POST">
-    <label for="username">
-      Username
-    </label>
-
     <label for="post">
-      Tell us more about your favourite plant-based milk 🐮
+      What's your favourite plant-based milk? Tell us more about it 🐮
       <span aria-hidden="true">*</span>
     </label>
     <input id="post" type="text" name="post" required />

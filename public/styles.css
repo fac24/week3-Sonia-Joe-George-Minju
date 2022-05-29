@@ -26,6 +26,7 @@ h1 {
 .h2-headings {
     font-family: 'Moo Lah Lah', sans-serif;
     font-size: 3rem;
+    text-align: center;
 }
 
 .flex-container {
